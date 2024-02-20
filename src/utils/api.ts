@@ -8,8 +8,6 @@ export async function getRequest <T> (url:string) {
     }
 
     return response.json() as T;
-
-    
     
 }
 catch (error) {

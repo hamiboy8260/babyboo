@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import { Produkt } from '../types/Produkt';
 import bestillingsliste from '../icons/bestillingsliste.svg';
@@ -19,30 +19,26 @@ export function ProduktListe(props:{products : Produkt[], totalProducts : number
 
  
 const calculateTotalPriceInDKK = (produkter: Produkt[], exchangeRate: number): number => {
-
-    // Initialisering af variabel til at holde den samlede pris i DKK
+   
 let totalPriceForAll = 0;
 
-// Iteration over hvert produkt i produkter-arrayet
 produkter.forEach(produkt => {
-    // For hvert produkt tilføjer vi dets pris til den samlede pris
+    
     totalPriceForAll += produkt.price;
 });
 
-// Multiplicering med valutakursen for at få prisen i DKK
 return totalPriceForAll * exchangeRate;
 };
 
 
 
 const ProductPCS = (produkter: Produkt[]): { [productId: number]: number } => {
-
     const productCounts: { [productId: number]: number } = {};
 
-    for (let i = 0; i < produkter.length; i++) {
-        const productId = produkter[i].id;
+    produkter.forEach(produkt => {
+        const productId = produkt.id;
         productCounts[productId] = (productCounts[productId] || 0) + 1;
-    }
+    });
 
     return productCounts;
 };
@@ -69,7 +65,7 @@ const totalPriceInDKK = calculateTotalPriceInDKK(products, exchangeRate);
                 <div className="p-5">
                     <div className="flex place-content-between">
                         <div className="p-2 rounded-sm w-auto overflow-x-hidden bg-[#F1ECE6]">
-                            <p className="text-xs ">{totalProducts} produkter</p>
+                            <p className="text-xs ">{props.totalProducts} produkter</p>
                         </div>
                         <div className="p-2 rounded-sm w-auto overflow-x-hidden bg-[#F1ECE6]">
                             <p className="text-xs ">Total : {totalPriceInDKK.toFixed(1)} DKK</p>
@@ -77,7 +73,7 @@ const totalPriceInDKK = calculateTotalPriceInDKK(products, exchangeRate);
                     </div>
 
                     <ul className="pt-3 flex flex-col gap-3">
-                        {products.slice(0, listLength).map((produkt, index) => (
+                        {props.products.slice(0, listLength).map((produkt, index) => (
                             <li
                                 key={produkt.id}
                                 className={`flex place-content-between h-[60px] pr-2  ${index % 2 !== 1 ? 'bg-[#FFFFFF]' : ''}`}
