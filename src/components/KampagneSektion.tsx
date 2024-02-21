@@ -8,7 +8,7 @@ export function KampagneSektion() {
 
    
     return (
-        <div className="text-left border-2 border-red w-auto">
+        <div className="text-left w-auto">
             <div className="flex items-center mb-4">
                 <img src={kampangeIcon} alt="Kampagne Icon" className="w-[25px] h-[25px] mr-2" />
                 <h2 className="text-2xl font-bold">Kampagner</h2>

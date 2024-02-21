@@ -54,7 +54,7 @@ export const HomePage:React.FC = () => {
         <div className="flex sm:flex-col md:flex-col xl:flex-row gap-[25px] ">
                 <ProduktListe products = {produkter} toggleFavorite={toggleFavorite} totalProducts = {totalProducts}/>
                 <LastOrders/>
-                <FavoritListe produkter = {produkter} />  
+                <FavoritListe produkter = {produkter} toggleFavorite={toggleFavorite} />  
         </div>
         <div className="flex gap-6 py-4 sm:items-center">
             <div className='w-auto h-auto'>

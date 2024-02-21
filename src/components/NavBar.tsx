@@ -24,12 +24,11 @@ const navLinks: NavLinkItem[] = [
 
 export const NavBar: React.FC = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [searchIsFocused, setSearchIsFocused] = useState<boolean>(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
-  const [searchIsFocused, setSearchIsFocused] = useState<boolean>(false);
 
   const handleSearchFocus = () => {
     setSearchIsFocused(true);
@@ -85,14 +84,6 @@ export const NavBar: React.FC = () => {
           </div>
         </div>
       </nav>
-
-      <div className="md:hidden flex justify-end p-4">
-        {showMenu ? (
-          <FontAwesomeIcon icon={faTimes} className="text-white" onClick={toggleMenu} />
-        ) : (
-          <FontAwesomeIcon icon={faBars} className="text-white" onClick={toggleMenu} />
-        )}
-      </div>
     </div>
   );
 };

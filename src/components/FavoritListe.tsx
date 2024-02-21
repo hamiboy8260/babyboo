@@ -5,7 +5,7 @@ import listIcon from '../icons/listIcon.svg';
 import trashIcon from '../icons/trashIcon.svg';
 
 
-export function FavoritListe(props: {produkter : Produkt[]}) {
+export function FavoritListe(props: {produkter : Produkt[] , toggleFavorite: (productId: number) => void}) {
 
     const {produkter} = props;
     const [edit, setEdit] = useState(false);
@@ -43,7 +43,7 @@ export function FavoritListe(props: {produkter : Produkt[]}) {
                                         {edit ? (  
                                             <button
                                                 className="bg-[#D4B8B8] rounded-[24px] w-fit px-2 h-[33px] flex place-items-center justify-center gap-[2px]"
-                                                onClick={() => console.log("Remove from favorites")}
+                                                onClick={() => props.toggleFavorite(item.id)}
                                             >
                                                 <img className="w-[20px] h-[20px]" src={trashIcon} alt="Trash" />
                                             </button>
