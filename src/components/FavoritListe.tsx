@@ -5,7 +5,13 @@ import listIcon from '../icons/listIcon.svg';
 import trashIcon from '../icons/trashIcon.svg';
 
 
-export function FavoritListe(props: {produkter : Produkt[] , toggleFavorite: (productId: number) => void}) {
+interface FavoritListeProps {
+    produkter: Produkt[];
+    toggleFavorite: (productId: number) => void;
+}
+
+
+export function FavoritListe(props: FavoritListeProps){
 
     const {produkter} = props;
     const [edit, setEdit] = useState(false);

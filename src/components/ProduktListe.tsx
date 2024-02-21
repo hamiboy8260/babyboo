@@ -6,7 +6,13 @@ import heartIcon from '../icons/heart.svg';
 import heartFilledIcon from '../icons/heart-filled.svg';
 import ArrowDown from '../icons/arrowDown.svg';
 
-export function ProduktListe(props:{products : Produkt[], totalProducts : number, toggleFavorite: (productId : number) => void}) {
+interface ProduktListeProps {
+    products: Produkt[];
+    totalProducts: number;
+    toggleFavorite: (productId: number) => void;
+}
+
+export function ProduktListe(props: ProduktListeProps) {
 
     const {products, totalProducts, toggleFavorite} = props;
     const [listLength, setListLength] = useState<number>(4);
